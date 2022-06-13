@@ -44,12 +44,12 @@ random_choice_alignment = random.choice(alignment_list)
 # Gathering commandline arguments to pass into the script
 parser = argparse.ArgumentParser(description="5e Character generator to a dictionary.", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-parser.add_argument("name", help="The user's account name")
-parser.add_argument("char_name", help="The character's name")
-parser.add_argument("-c", "--the_class", default=str(random_choice_class), help="The class. Randomly chosen.")
-parser.add_argument("-r", "--race", default=str(random_choice_race),help="The race. Randomly chosen.")
-parser.add_argument("-l", "--level", default=random.randint(1,10), help="The level. Randomly chosen.", type=int)
-parser.add_argument("-a", "--alignment", default=str(random_choice_alignment),help="The alignment. Randomly chosen.")
+parser.add_argument("name", help="The player's name")
+parser.add_argument("char_name", help="Their character's name")
+parser.add_argument("-c", "--the_class", default=str(random_choice_class), help="The class. Randomly chosen each time the script is ran.")
+parser.add_argument("-r", "--race", default=str(random_choice_race),help="The race. Randomly chosen each time the script is ran.")
+parser.add_argument("-l", "--level", default=random.randint(1,10), help="The level. Randomly chosen each time the script is ran.", type=int)
+parser.add_argument("-a", "--alignment", default=str(random_choice_alignment),help="The alignment. Randomly chosen each time the script is ran.")
 args = parser.parse_args()
 config = vars(args)
 
@@ -66,17 +66,10 @@ if name == None:
 if char_name == None:
 	sys.exit("Need char_name arg!")
 
-#print("ARGS USED:")
-#print(config)
-
-
-
-
 # Start of script
-#print ("Welcome to the Test Character Generator.")
-#print ("This will generate a test character in a dictionary, seperated by keys.")
-#print ("There are a few required variables to generate a character.")
-#print ("Pass them as commandline arguements. The order MUST BE Name, Character Name")
+print ("Welcome to the Test Character Generator.")
+print ("There are a few required variables to generate a character.")
+print ("Pass them as commandline arguements. The order MUST BE Name, Character Name")
 
 
 STR = random.randint(2,20)
@@ -177,3 +170,5 @@ def make_char_dictionary():
 
 
 make_char_dictionary()
+
+# TODO - Need to have it return an ascii art character sheet, not just a dictionary
